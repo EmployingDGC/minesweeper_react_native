@@ -41,7 +41,6 @@ class Main extends React.Component {
 
         for (let i = 0; i < qtyMines; i++) {
             const random = parseInt(Math.random() * qtyCell);
-            // const random = 5;
 
             if (posMines.includes(random)) {
                 i -= 1;
@@ -90,16 +89,24 @@ class Main extends React.Component {
         }
 
         for (let i = 0; i < qtyCell; i++) {
-            
+            allCell.push(0);
         }
 
-        console.log(`\n\n\t${qtyCell}\n\t${posMines}\n\t${countAux}\n\t${posMinesCount}\n\n`);
+        for (let i = 0; i < countAux.length; i++) {
+            allCell[countAux[i]] += 1;
+        }
+
+        console.log(`\n\n\t${qtyCell}\n\t${allCell}\n\t${posMines}\n\t${countAux}\n\t${posMinesCount}\n\n`);
 
         for (let i = 0; i < qtyCell; i++) {
             let value = "";
 
             if (posMines.includes(i)) {
                 value = "M";
+            }
+
+            else {
+                value = allCell[i];
             }
 
             const component = (
