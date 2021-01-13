@@ -17,12 +17,31 @@ class Main extends React.Component {
 
     createCell = (qty) => {
         const listComponents = [];
+        
+        let posMines = [];
+
+        for (let i = 0; i < this.props.mines; i++) {
+            const random = parseInt(Math.random() * qty + 1);
+
+            if (posMines.includes(random)) {
+                i -= 1;
+                continue;
+            }
+
+            posMines.push(random);
+        }
 
         for (let i = 0; i < qty; i++) {
+            let value = "";
+
+            if (posMines.includes(i)) {
+                value = "M";
+            }
+
             const component = (
                 <View>
                     <CustomButton
-                        tittle="0"
+                        tittle={value}
                         styleButton={[
                             styles.button,
                             {

@@ -14,15 +14,32 @@ class App extends React.Component {
         this.state = {
             // umaPropriedade: this.props.umaPropriedade,
         }
+
+        this.properts = {
+            mines: 15,
+            rows: 10,
+            columns: 10,
+
+        }
     }
 
     render() {
         return (
             <View style={[styles.container]}>
-                <StatusBar barStyle='light-content' backgroundColor='#000000' />
+                <StatusBar
+                    barStyle='light-content'
+                    backgroundColor='#000000'
+                />
 
-                <Header />
-                <Main row={10} column={15} />
+                <Header
+                    mines={this.properts.mines}
+                />
+
+                <Main
+                    row={this.properts.rows}
+                    column={this.properts.columns}
+                    mines={this.properts.mines}
+                />
             </View>
         )
     };

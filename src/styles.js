@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#cccccc',
         paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : 0,
         paddingBottom: getBottomSpace(),
     }
