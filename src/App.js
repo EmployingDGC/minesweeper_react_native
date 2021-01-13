@@ -16,10 +16,9 @@ class App extends React.Component {
         }
 
         this.properts = {
-            mines: 15,
-            rows: 10,
-            columns: 10,
-
+            mines: 2,
+            rows: 5,
+            columns: 5,
         }
     }
 
