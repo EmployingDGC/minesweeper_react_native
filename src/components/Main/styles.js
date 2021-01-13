@@ -17,10 +17,6 @@ const styles = StyleSheet.create({
         borderBottomColor: "#101010",
         borderLeftColor: "#bfbfbf",
     },
-
-    text: {
-        color: "#ffffff",
-    },
 });
 
 export default styles;

@@ -11,7 +11,7 @@ class Main extends React.Component {
         super(props);
 
         this.state = {
-            // umaPropriedade: this.props.umaPropriedade,
+
         }
     }
 
@@ -35,7 +35,6 @@ class Main extends React.Component {
         const listComponents = [];
         
         let posMines = [];
-        let posMinesCount = [];
         let countAux = [];
         let allCell = [];
 
@@ -96,23 +95,17 @@ class Main extends React.Component {
             allCell[countAux[i]] += 1;
         }
 
-        console.log(`\n\n\t${qtyCell}\n\t${allCell}\n\t${posMines}\n\t${countAux}\n\t${posMinesCount}\n\n`);
+        // console.log(`\n\n\t${qtyCell}\n\t${allCell}\n\t${posMines}\n\t${countAux}\n\t${posMinesCount}\n\n`);
 
         for (let i = 0; i < qtyCell; i++) {
-            let value = "";
-
-            if (posMines.includes(i)) {
-                value = "M";
-            }
-
-            else {
-                value = allCell[i];
-            }
+            const content = posMines.includes(i) ? "M" : allCell[i];
 
             const component = (
                 <View key={i}>
                     <CustomButton
-                        tittle={value}
+                        opened
+                        mines={parseInt(content)}
+                        tittle={content}
                         styleButton={[
                             styles.button,
                             {
@@ -121,13 +114,12 @@ class Main extends React.Component {
                             },
                         ]}
                         styleText={[
-                            styles.text,
                             {
-                                display: "flex",
+                                display: "none",
                                 fontSize: (Dimensions.get("window").width / column) / 2,
+                                color: "#ffffff",
                             }
                         ]}
-                        onPress={() => {}}
                     />
                 </View>
             );
