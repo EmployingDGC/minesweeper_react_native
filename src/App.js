@@ -1,9 +1,6 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 
-import Header from "./components/Header";
-import Main from "./components/Main";
-
 import styles from './styles';
 
 class App extends React.Component {
@@ -28,16 +25,6 @@ class App extends React.Component {
                 <StatusBar
                     barStyle='light-content'
                     backgroundColor='#000000'
-                />
-
-                <Header
-                    mines={this.properts.mines}
-                />
-
-                <Main
-                    row={this.properts.rows}
-                    column={this.properts.columns}
-                    mines={this.properts.mines}
                 />
             </View>
         )
