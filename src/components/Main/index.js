@@ -36,7 +36,7 @@ class Main extends React.Component {
         
         let posMines = [];
         let countAux = [];
-        let allCell = [];
+        let allCell = Array(qtyCell).fill(0);
 
         for (let i = 0; i < qtyMines; i++) {
             const random = parseInt(Math.random() * qtyCell);
@@ -85,10 +85,6 @@ class Main extends React.Component {
             const mine = posMines[i];
             
             this.removeItemAll(countAux, mine);
-        }
-
-        for (let i = 0; i < qtyCell; i++) {
-            allCell.push(0);
         }
 
         for (let i = 0; i < countAux.length; i++) {
