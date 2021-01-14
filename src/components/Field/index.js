@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 // import styles from './styles';
 
-class RenderBoard extends React.Component {
+class Field extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,4 +22,4 @@ class RenderBoard extends React.Component {
     };
 }
 
-export default RenderBoard;
+export default Field;

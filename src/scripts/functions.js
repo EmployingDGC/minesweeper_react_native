@@ -84,10 +84,10 @@ const setNumbers = (board) => {
     }
 }
 
-const createBoard = () => {
-    const board = newBoard(5, 4);
+const createBoard = (rows = 10, columns = 10, qty_mines = 10) => {
+    const board = newBoard(rows, columns);
 
-    sortMines(board, 25);
+    sortMines(board, qty_mines);
 
     setNumbers(board);
 
