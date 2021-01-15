@@ -1,0 +1,16 @@
+import { StyleSheet } from 'react-native'
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
+
+    styleButton: {
+        backgroundColor: "#fff",
+        borderColor: "#ccc",
+        borderWidth: 5,
+    },
+});
+
+export default styles;

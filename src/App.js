@@ -46,9 +46,9 @@ class App extends React.Component {
                 />
                 
                 <Field
-                    qtyMines={this.state.qty_mines}
                     qtyRows={this.state.qty_rows}
                     qtyColumns={this.state.qty_columns}
+                    qtyMines={this.state.qty_mines}
                 />
             </View>
         )

@@ -94,4 +94,6 @@ const createBoard = (rows = 10, columns = 10, qty_mines = 10) => {
     return board;
 }
 
-export default createBoard;
+export {
+    createBoard,
+};

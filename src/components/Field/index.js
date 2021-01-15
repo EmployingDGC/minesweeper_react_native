@@ -1,5 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+
+import { createBoard } from "../../scripts/functions";
+import RenderBoard from "../RenderBoard";
 
 // import styles from './styles';
 
@@ -9,14 +12,19 @@ class Field extends React.Component {
         super(props);
 
         this.state = {
-            // umaPropriedade: this.props.umaPropriedade,
+
         }
     }
 
     render() {
         return (
             <View>
-
+                <RenderBoard
+                    board={createBoard(this.props.qtyRow, this.props.qtyColumn, this.props.qtyMines)}
+                    qtyRow={this.props.qtyRow}
+                    qtyColumn={this.props.qtyColumn}
+                    qtyMines={this.props.qtyMines}
+                />
             </View>
         )
     };
