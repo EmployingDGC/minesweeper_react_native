@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         flexWrap: "wrap",
+        justifyContent: "center",
     },
 
     styleButton: {
@@ -24,6 +25,10 @@ const styles = StyleSheet.create({
         borderBottomColor: "#cccccc",
         borderLeftColor: "#cccccc",
         borderWidth: 1,
+    },
+
+    styleButtonFlagged: {
+        backgroundColor: "#f00",
     },
 
     styleTextNumberOne: {

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Alert } from 'react-native';
 
+import { openAllMines, createBoard } from "../../scripts/functions";
 import CustomButton from "../CustomButton";
 
 import styles from './styles';
@@ -28,14 +29,38 @@ class RenderBoard extends React.Component {
 
         else {
             element.opened = true;
+
+            if (element.mined) {
+                openAllMines(board);
+
+                this.setState({
+                    board,
+                });
+
+                Alert.alert("KKKKK", "perdeu trouxa!!!", [{ text: "Reiniciar", onPress: () => this.props.resetBoard(this.props.qtyRows, this.props.qtyColumns) }]);
+            }
     
-            if (element.number == 0 && !element.mined) {
+            else if (element.number == 0 && !element.mined) {
+                this.onPress(row - 1, column - 1, board);
                 this.onPress(row - 1, column, board);
-                this.onPress(row + 1, column, board);
-                this.onPress(row, column + 1, board);
+                this.onPress(row - 1, column + 1, board);
                 this.onPress(row, column - 1, board);
+                this.onPress(row, column + 1, board);
+                this.onPress(row + 1, column - 1, board);
+                this.onPress(row + 1, column, board);
+                this.onPress(row + 1, column + 1, board);
             }
         }
+
+        this.setState({
+            board,
+        });
+    }
+
+    onLongPress = (row, column) => {
+        const board = this.state.board;
+
+        board[row][column].flagged = !board[row][column].flagged;
 
         this.setState({
             board,
@@ -103,22 +128,26 @@ class RenderBoard extends React.Component {
                             onPress={() => {
                                 this.onPress(row, column);
                             }}
+                            onLongPress={() => {
+                                this.onLongPress(row, column);
+                            }}
                             styleButton={[
                                 styles.styleButton,
                                 {
-                                    width: parseInt(Dimensions.get("window").width / this.props.qtyColumns),
-                                    height: parseInt(Dimensions.get("window").width / this.props.qtyColumns),
+                                    width: Dimensions.get("window").width / this.props.qtyColumns,
+                                    height: Dimensions.get("window").width / this.props.qtyColumns,
                                 },
                                 this.state.board[row][column].opened ? styles.styleButtonOpened : null,
+                                this.state.board[row][column].flagged ? styles.styleButtonFlagged : null,
                             ]}
                             styleText={[
                                 styles_text,
                                 {
-                                    fontSize: parseInt(Dimensions.get("window").width / this.props.qtyColumns) / 1.5,
-                                    display: (this.state.board[row][column].opened ? "flex" : "none"),
+                                    fontSize: Dimensions.get("window").width / this.props.qtyColumns / 1.5,
+                                    display: this.state.board[row][column].opened ? "flex" : "none",
                                 },
                             ]}
-                            touchSoundDisabled={false}
+                            touchSoundDisabled={true}
                             disabled={this.state.board[row][column].opened}
                         />
                     </View>

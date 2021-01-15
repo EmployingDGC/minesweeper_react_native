@@ -23,6 +23,7 @@ class CustomButton extends React.Component {
                     underlayColor={`${this.props.styleButton.backgroundColor}5f`}
                     touchSoundDisabled={this.props.touchSoundDisabled}
                     disabled={this.props.disabled}
+                    onLongPress={this.props.onLongPress}
                 >
                     <Text style={this.props.styleText}>{this.props.tittle}</Text>
                 </TouchableHighlight>

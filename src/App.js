@@ -1,6 +1,8 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 
+import { createBoard } from "./scripts/functions";
+
 import Header from "./components/Header";
 import Field from "./components/Field";
 
@@ -12,9 +14,10 @@ class App extends React.Component {
         super(props);
 
         this.state = {
+            board: createBoard(20, 15, 50),
             qty_mines: 50,
-            qty_rows: 30,
-            qty_columns: 20,
+            qty_rows: 20,
+            qty_columns: 15,
         }
     }
 
@@ -37,8 +40,7 @@ class App extends React.Component {
 
     onChangeBoard = (qty_rows, qty_columns) => {
         this.setState({
-            qty_rows,
-            qty_columns,
+            board: createBoard(qty_rows, qty_columns, this.state.qty_mines)
         });
     }
 
@@ -56,6 +58,8 @@ class App extends React.Component {
                 />
                 
                 <Field
+                    board={this.state.board}
+                    resetBoard={this.onChangeBoard}
                     qtyRows={this.state.qty_rows}
                     qtyColumns={this.state.qty_columns}
                     qtyMines={this.state.qty_mines}

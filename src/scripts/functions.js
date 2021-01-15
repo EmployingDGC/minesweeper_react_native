@@ -94,6 +94,19 @@ const createBoard = (rows = 10, columns = 10, qty_mines = 10) => {
     return board;
 }
 
+const openAllMines = (board) => {
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[0].length; j++) {
+            const field = board[i][j];
+            if (field.mined) {
+                field.flagged = false;
+                field.opened = true;
+            }
+        }
+    }
+}
+
 export {
     createBoard,
+    openAllMines,
 };
