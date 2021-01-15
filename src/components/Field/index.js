@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 
 import { createBoard } from "../../scripts/functions";
 import RenderBoard from "../RenderBoard";
@@ -20,7 +20,7 @@ class Field extends React.Component {
         return (
             <View>
                 <RenderBoard
-                    board={createBoard(this.props.qtyRow, this.props.qtyColumn, this.props.qtyMines)}
+                    board={createBoard(this.props.qtyRows, this.props.qtyColumns, this.props.qtyMines)}
                     qtyRows={this.props.qtyRows}
                     qtyColumns={this.props.qtyColumns}
                     qtyMines={this.props.qtyMines}

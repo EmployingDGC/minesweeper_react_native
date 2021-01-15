@@ -12,9 +12,9 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            qty_mines: 30,
-            qty_rows: 10,
-            qty_columns: 10,
+            qty_mines: 50,
+            qty_rows: 30,
+            qty_columns: 20,
         }
     }
 

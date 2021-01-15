@@ -15,10 +15,27 @@ class RenderBoard extends React.Component {
         }
     }
 
-    onPress = (row, column) => {
-        const board = this.state.board;
+    onPress = (row, column, board = this.state.board) => {
+        if (row < 0 || column < 0 || row >= board.length || column >= board[0].length) {
+            return;
+        }
 
-        board[row][column].opened = true;
+        const element = board[row][column];
+
+        if (element.opened || element.flagged) {
+            return;
+        }
+
+        else {
+            element.opened = true;
+    
+            if (element.number == 0 && !element.mined) {
+                this.onPress(row - 1, column, board);
+                this.onPress(row + 1, column, board);
+                this.onPress(row, column + 1, board);
+                this.onPress(row, column - 1, board);
+            }
+        }
 
         this.setState({
             board,
@@ -34,14 +51,6 @@ class RenderBoard extends React.Component {
             for (let column = 0; column < board[0].length; column++) {
                 let styles_text = [];
                 let tittle = "";
-
-                // row: number;
-                // column: number;
-                // number: number;
-                // flagged: boolean;
-                // opened: boolean;
-                // mined: boolean;
-                // exploded: boolean;
 
                 if (board[row][column].mined) {
                     tittle = "*";
