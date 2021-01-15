@@ -28,7 +28,7 @@ const newBoard = (rows, columns) => {
 }
 
 const sortMines = (board, qty_mines) => {
-    const max_percent_mines = 20 / 100;
+    const max_percent_mines = 30 / 100;
 
     let i = 0;
 
@@ -70,7 +70,7 @@ const setNumbers = (board) => {
                 const current_row = around[i][0];
                 const current_column = around[i][1];
                 
-                if (current_row <= 0 || current_column <= 0 || current_row >= board.length || current_column >= board[0].length) {
+                if (current_row < 0 || current_column < 0 || current_row >= board.length || current_column >= board[0].length) {
                     continue;
                 }
 

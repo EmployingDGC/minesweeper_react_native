@@ -12,13 +12,24 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            qty_mines: 10,
+            qty_mines: 30,
             qty_rows: 10,
             qty_columns: 10,
         }
     }
 
-    onChangeMines = (qty_mines) => {
+    setDifficult = (difficult) => {
+        if (difficult <= 0) {
+            difficult = 1;
+        }
+        else if (difficult > 3) {
+            difficult = 3
+        }
+
+        const qty_cells = this.state.qty_rows * this.state.qty_columns;
+
+        let qty_mines = difficult * qty_cells / 10;
+
         this.setState({
             qty_mines,
         });
@@ -41,7 +52,6 @@ class App extends React.Component {
 
                 <Header
                     qtyMines={this.state.qty_mines}
-                    onChangeMines={this.onChangeMines}
                     onChangeBoard={this.onChangeBoard}
                 />
                 
