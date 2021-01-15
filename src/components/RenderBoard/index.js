@@ -1,6 +1,5 @@
-import { parseSync } from '@babel/core';
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 
 import CustomButton from "../CustomButton";
 
@@ -31,8 +30,8 @@ class RenderBoard extends React.Component {
                             styleButton={[
                                 styles.styleButton,
                                 {
-                                    width: parseInt(Dimensions.get("window").width / this.props.qtyColumn),
-                                    height: parseInt(Dimensions.get("window").width / this.props.qtyColumn),
+                                    width: 30,
+                                    height: 30,
                                 },
                             ]}
                             styleText={false}
